@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+}
+ 
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.react-flow__node-mindmap {
+  background: white;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  padding: 2px 5px;
+  font-weight: 700;
+}
+
+.react-flow__handle.target {
+  top: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.react-flow__handle.source {
+  top: 0;
+  left: 0;
+  transform: none;
+  background: #00dbfd;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: solid;
+}
+
+.inputWrapper {
+  display: flex;
+  height: 30px;
+  z-index: 1;
+  position: relative;
+}
+ 
+.dragHandle {
+  background: transparent;
+  width: 14px;
+  height: 100%;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+}
+ 
+.input {
+  border: none;
+  border-radius: 1px;
+  font-weight: 700;
+  background: transparent;
+  height: 110%;
+  color: #222;
+}
+
+.textBox {
+  border: none;
+  border-radius: 1px;
+  font-weight: 100;
+  font-size: small;
+  background: transparent;
+  height: 110%;
+  width: 110%;
+  color: #222;
+}
+
+.Login-position {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+}
+
+.input-margin{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mainContainer {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 64px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+}
+
+.semiTitleContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultContainer,
+.historyItem {
+  flex-direction: row;
+  display: flex;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.historyContainer {
+  flex-direction: column;
+  display: flex;
+  height: 200px;
+  align-items: center;
+  flex-grow: 5;
+  justify-content: flex-start;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 260px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.inputContainer > .errorLabel {
+  color: red;
+  font-size: 12px;
+}
+
+.inputBox {
+  height: 48px;
+  width: 400px;
+  font-size: large;
+  border-radius: 8px;
+  border: 1px solid grey;
+  padding-left: 8px;
+}
+
+button {
+  border: none;
+  background: cornflowerblue;
+  color: white;
+  padding: 6px 12px;
+  margin: 4px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  border: none;
+  background: cornflowerblue;
+  color: white;
+  padding: 6px 12px;
+  margin: 4px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
