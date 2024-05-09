@@ -16,7 +16,7 @@ import CustomNode from './CustomNode';
 import CustomEdge from './CustomEdge';
 
 import 'reactflow/dist/style.css';
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, MouseEvent } from 'react';
 
 const nodeTypes = {
     mindmap: CustomNode,
@@ -90,6 +90,7 @@ function Flow() {
           node.querySelector('input')?.focus({ preventScroll: true });
         } else if (targetIsPane && connectingNodeId.current) {
           const parentNode = nodeInternals.get(connectingNodeId.current);
+          // @ts-ignore comment
           const childNodePosition = getChildNodePosition(event, parentNode);
   
           if (parentNode && childNodePosition) {
@@ -127,21 +128,23 @@ function Flow() {
   
   // const [jsonData, setJsonData] = useState(null);
 
-  const handleFileChange = (event) => {
+  const handleFileChange = (event: React.ChangeEvent<any>) => {
     const file = event.target.files[0];
     const reader = new FileReader();
     
     reader.onload = (e) => {
       try {
-        const parsedJson = JSON.parse(e.target.result);
-        console.log("e.target.result", parsedJson);
-        const newNodes = parsedJson["nodes"];
-        const newEdges = parsedJson["edges"];
-        console.log("newNodes", newNodes);
-        console.log("newEdges", newEdges);
-        updateAllNodes(newNodes, newEdges);
-        // const { newNodes, newEdges } = parsedJson;
-        // updateAllNodes(newNodes, newEdges);
+        if (e.target != null && typeof(e.target.result) == "string") {
+          const parsedJson = JSON.parse(e.target.result);
+          console.log("e.target.result", parsedJson);
+          const newNodes = parsedJson["nodes"];
+          const newEdges = parsedJson["edges"];
+          console.log("newNodes", newNodes);
+          console.log("newEdges", newEdges);
+          updateAllNodes(newNodes, newEdges);
+          // const { newNodes, newEdges } = parsedJson;
+          // updateAllNodes(newNodes, newEdges);
+        }
       } catch (error) {
         console.error('Error parsing JSON file: ', error);
       }

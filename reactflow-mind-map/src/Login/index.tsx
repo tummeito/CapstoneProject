@@ -11,7 +11,7 @@ const LoginPage: React.FC = () => {
     const [registerPassword, setRegisterPassword] = useState('');
     // const [error, setError] = useState('');
   
-    const handleLogin = async (e) => {
+    const handleLogin = async (e: React.ChangeEvent<any>) => {
       e.preventDefault();
       try {
         console.log(username, password)
@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
       }
     };
     
-    const handleRegister = async (e) => {
+    const handleRegister = async (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         try {
             console.log(registerUsername, registerPassword)
