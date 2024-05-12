@@ -16,7 +16,7 @@ import CustomNode from './CustomNode';
 import CustomEdge from './CustomEdge';
 
 import 'reactflow/dist/style.css';
-import React, { useRef, useCallback, useState, MouseEvent } from 'react';
+import React, { useRef, useCallback, MouseEvent } from 'react';
 
 const nodeTypes = {
     mindmap: CustomNode,

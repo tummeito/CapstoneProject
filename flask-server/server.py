@@ -17,13 +17,14 @@ app.config['JWT_REFRESH_TOKEN_EXPIRES'] = False  # or use timed expiration
 
 app.secret_key = 'your secret key'
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'capstoneproject'
+app.config['MYSQL_HOST'] = 'tummeito.mysql.pythonanywhere-services.com'
+app.config['MYSQL_USER'] = 'tummeito'
+app.config['MYSQL_USERNAME'] = 'tummeito'
+app.config['MYSQL_PASSWORD'] = 'tummeitopassworddb'
+app.config['MYSQL_DB'] = 'tummeito$capstoneproject'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/capstoneproject"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://tummeito:@tummeito.mysql.pythonanywhere-services.com/tummeito$capstoneproject"
 
 app.config['MAX_CONTENT_LENGTH'] = 4096 * 4096
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
@@ -51,10 +52,7 @@ def index():
         cursor = mysql.connection.cursor()
 
         # Executing SQL Statements
-        cursor.execute(''' CREATE TABLE IF NOT EXISTS user_table (
-                    user_id INT AUTO_INCREMENT PRIMARY KEY, 
-                    username VARCHAR(80) UNIQUE NOT NULL, 
-                    password VARCHAR(120) NOT NULL) ''')
+        cursor.execute(''' CREATE TABLE IF NOT EXISTS user_table (user_id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(80) UNIQUE NOT NULL, password VARCHAR(120) NOT NULL) ''')
         cursor.execute(''' INSERT IGNORE INTO user_table(username, password) VALUES ('admin', 'password') ''')
 
         # Saving the actions performed on the DB

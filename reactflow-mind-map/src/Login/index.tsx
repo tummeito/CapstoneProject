@@ -15,7 +15,11 @@ const LoginPage: React.FC = () => {
       e.preventDefault();
       try {
         console.log(username, password)
-        const response = await axios.post("http://127.0.0.1:5000/login", {
+        // const response = await axios.post("http://127.0.0.1:5000/login", {
+        //     'username' : username,
+        //     'password' : password
+        // }, { withCredentials: true });
+        const response = await axios.post("https://tummeito.pythonanywhere.com/login", {
             'username' : username,
             'password' : password
         }, { withCredentials: true });
@@ -32,7 +36,7 @@ const LoginPage: React.FC = () => {
         e.preventDefault();
         try {
             console.log(registerUsername, registerPassword)
-            const response = await axios.post("http://127.0.0.1:5000/users", {
+            const response = await axios.post("https://tummeito.pythonanywhere.com/users", {
             'username' : registerUsername,
             'password' : registerPassword
         }, { withCredentials: true });
