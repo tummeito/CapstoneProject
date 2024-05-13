@@ -34,6 +34,7 @@ const selector = (state: RFState) => ({
   onEdgesChange: state.onEdgesChange,
   addChildNode: state.addChildNode,
   updateAllNodes: state.updateAllNodes,
+  addNewNode: state.addNewNode
 });
 
 
@@ -42,7 +43,7 @@ const nodeOrigin: NodeOrigin = [0.5, 0.5];
 
 function Flow() {
   
-  const { nodes, edges, onNodesChange, onEdgesChange, addChildNode, updateAllNodes } = useStore(
+  const { nodes, edges, onNodesChange, onEdgesChange, addChildNode, updateAllNodes, addNewNode } = useStore(
     selector,
     shallow,
   );
@@ -100,7 +101,12 @@ function Flow() {
       },
       [getChildNodePosition]
   );
-  
+
+  const newRootNode = () => {
+    addNewNode();
+  };
+
+
   const exportToJson = () => {
 
     const jsonData = {nodes, edges};
@@ -153,6 +159,7 @@ function Flow() {
     reader.readAsText(file);
   };
 
+
   // const handleUpload = () => {
   //   // Process jsonData array of objects here
   //   console.log('Uploaded JSON data: ', jsonData);
@@ -183,6 +190,9 @@ function Flow() {
           <h1>Upload Json file</h1>
 
           <input type="file" onChange={handleFileChange} />
+        </div>
+        <div>
+          <button onClick={newRootNode}>Create a new root node</button>
         </div>
       </Panel>
       <Panel position="top-left"><h1>Quest Tracker</h1></Panel>

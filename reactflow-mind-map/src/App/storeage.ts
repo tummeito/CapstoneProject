@@ -9,6 +9,7 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
   XYPosition,
+  Position,
 } from 'reactflow';
 import { create } from 'zustand';
  
@@ -21,6 +22,7 @@ export type RFState = {
   updateNodeLabel: (nodeId: string, label: string) => void;
   updateNodeText: (nodeId: string, text: string) => void;
   updateAllNodes: (newNodes: Node[], newEdges: Edge[]) => void;
+  addNewNode: () => void;
 };
  
 const useStore = create<RFState>((set, get) => ({
@@ -84,6 +86,18 @@ const useStore = create<RFState>((set, get) => ({
         return node;
       })
     })
+  },
+  addNewNode: () => {
+    const newNode = {
+      id: nanoid(),
+      type: 'mindmap',
+      data: { label: 'New ROOT' , text: ''},
+      position: { x: 200, y: 0 }
+    };
+
+    set ({
+      nodes: [...get().nodes, newNode]
+    });
   },
   updateAllNodes: (newNodes: Node[], newEdges: Edge[]) => {
     set ({
