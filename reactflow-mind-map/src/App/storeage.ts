@@ -9,7 +9,6 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
   XYPosition,
-  Position,
 } from 'reactflow';
 import { create } from 'zustand';
  
